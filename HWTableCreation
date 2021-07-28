@@ -1,0 +1,60 @@
+CREATE TABLE "Customer" (
+  "customer_id" SERIAL,
+  "first_name" VARCHAR(100),
+  "last_name" VARCHAR(100),
+  "address" VARCHAR(150),
+  "billing_info" VARCHAR(150),
+  PRIMARY KEY ("customer_id")
+);
+
+CREATE TABLE "Movie" (
+  "movie_id" SERIAL,
+  "movie_name" VARCHAR(150),
+  "Theatre number" INTEGER,
+  "movie_date" DATE,
+  "movie_time" TIME,
+  "capacity" INTEGER,
+  PRIMARY KEY ("movie_id")
+);
+
+CREATE TABLE "Tickets" (
+  "ticket_number" SERIAL,
+  "movie_id" INTEGER,
+  "ticket_price" NUMERIC(4,2),
+  "seat_number" INTEGER,
+  PRIMARY KEY ("ticket_number"),
+  CONSTRAINT "FK_Tickets.movie_id"
+    FOREIGN KEY ("movie_id")
+      REFERENCES "Movie"("movie_id")
+);
+
+
+
+CREATE TABLE "Concessions" (
+  "concession_id" SERIAL,
+  "concession_name" VARCHAR(150),
+  "concession_price" NUMERIC(4,2),
+  PRIMARY KEY ("concession_id")
+);
+
+CREATE TABLE "Ticket_Sales" (
+  "ticket_number" INTEGER,
+  "customer_id" INTEGER,
+  "sale_date" DATE,
+  CONSTRAINT "FK_Ticket_Sales.customer_id"
+    FOREIGN KEY ("customer_id")
+      REFERENCES "Customer"("customer_id")
+);
+
+CREATE TABLE "Concession_Sales" (
+  "order_id" SERIAL,
+  "concession_id" INTEGER,
+  "customer_id" INTEGER,
+  PRIMARY KEY ("order_id"),
+  CONSTRAINT "FK_Concession_Sales.concession_id"
+    FOREIGN KEY ("concession_id")
+      REFERENCES "Concessions"("concession_id"),
+  CONSTRAINT "FK_Concession_Sales.customer_id"
+    FOREIGN KEY ("customer_id")
+      REFERENCES "Customer"("customer_id")
+);

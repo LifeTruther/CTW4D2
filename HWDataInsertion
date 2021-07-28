@@ -1,0 +1,77 @@
+-- INSERTing data INTO a table
+
+INSERT INTO "Customer"(
+	"customer_id",
+	"first_name",
+	"last_name",
+	"address",
+	"billing_info"
+)VALUES(
+	1,
+	'Nate',
+	'Welter',
+	'556 Circle Dr, Chicago, IL 60611',
+	'4242-4242-4242-4242 623 06/22'
+);
+
+INSERT INTO "Movie"(
+	"movie_id",
+  "movie_name",
+  "Theatre number",
+  "movie_date",
+  "movie_time",
+  "capacity"
+)VALUES(
+	1,
+	'The Thirst Offender',
+	'7',
+	'08-15-2021',
+	'13:15:00',
+	99
+);
+
+INSERT INTO "Tickets"(
+	"ticket_number",
+	"movie_id",
+	"ticket_price",
+	"seat_number"
+)VALUES(
+	1,
+	1,
+	17.99,
+	44
+);
+
+INSERT INTO "Ticket_Sales"(
+	"ticket_number",
+	"customer_id",
+	"sale_date"
+)VALUES(
+	1,
+	1,
+	'07-25-2021'
+);
+
+INSERT INTO "Concessions"(
+	"concession_id",
+  	"concession_name",
+  	"concession_price"
+)VALUES(
+	1,
+	'Popcorn-LG',
+	4.99
+);
+
+
+INSERT INTO "Concession_Sales"(
+	"order_id",
+  	"concession_id",
+  	"customer_id"
+)VALUES(
+	1,
+	1,
+	1
+);
+
+
+
